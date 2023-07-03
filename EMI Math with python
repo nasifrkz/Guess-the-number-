@@ -1,0 +1,23 @@
+#New
+def loan_emi(amount, duration):
+    emi = amount/duration
+    print("The EMI is ${}".format(emi))
+loan_emi(1260000, 12*10)
+loan_emi(1260000, 8*12)
+
+import math
+help(math.ceil)
+
+#full math
+def loan_emi(amount, duration, rate, downpayment = 0):
+    loan_amount = amount - downpayment
+    emi = loan_amount * rate * ((1+rate)**duration) / (((1+rate)**duration)-1)
+    emi = math.ceil(emi)
+    return emi
+emi1 = loan_emi(
+    amount=1260000,
+    duration = 8*12,
+    rate= .1/12,
+    downpayment= 3e5
+)
+print(emi1)
